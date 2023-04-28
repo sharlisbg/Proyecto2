@@ -44,7 +44,7 @@ public class MoviesByActor extends HttpServlet {
 	 	JSONArray PeliculasActor = new JSONArray();
 	 	
 	 	String myActor = request.getParameter("actor_name");
-	 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://44.215.127.186:7687", "neo4j", "elapse-career-realignments" ) )
+	 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://44.213.125.209:7687", "neo4j", "maintenance-glossary-goal" ) )
 	        {
 			 	LinkedList<String> myactors = greeter.getMoviesByActor(myActor);
 			 	
