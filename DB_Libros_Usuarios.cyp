@@ -6,35 +6,46 @@ CREATE (:Book {title: 'Harry Potter y el Cáliz de Fuego', author: 'J.K. Rowling
 CREATE (:Book {title: 'Harry Potter y la Orden del Fénix', author: 'J.K. Rowling', ranking : 0.0})
 CREATE (:Book {title: 'Harry Potter y el Misterio del Príncipe', author: 'J.K. Rowling', ranking : 0.0})
 CREATE (:Book {title: 'Harry Potter y las Reliquias de la Muerte', author: 'J.K. Rowling', ranking : 0.0})
-CREATE (:Book {title: 'Cien años de soledad', author: 'Gabriel García Márquez', ranking : 0.0});
+CREATE (:Book {title: 'Cien años de soledad', author: 'Gabriel García Márquez', ranking : 0.0})
+CREATE (:Genre {name: 'Fábula política'})
+CREATE (:Genre {name: 'Fantasía'})
+CREATE (:Genre {name: 'Realismo mágico'});
 
 MATCH (book:Book {title: 'Animal Farm'})
-CREATE (:Genre {name: 'Fábula política'})-[:HAS_BOOK]->(book);
+MATCH (genre:Genre {name: 'Fábula política'})
+CREATE (book)-[:BELONG_TO]->(genre);
 
 MATCH (book:Book {title: 'Harry Potter y la Piedra Filosofal'})
-CREATE (:Genre {name: 'Fantasía'})-[:HAS_BOOK]->(book);
+MATCH (genre:Genre {name: 'Fantasía'})
+CREATE (book)-[:BELONG_TO]->(genre);
 
 MATCH (book:Book {title: 'Harry Potter y la Cámara Secreta'})
-CREATE (:Genre {name: 'Fantasía'})-[:HAS_BOOK]->(book);
+MATCH (genre:Genre {name: 'Fantasía'})
+CREATE (book)-[:BELONG_TO]->(genre);
 
 MATCH (book:Book {title: 'Harry Potter y el Prisionero de Azkaban'})
-CREATE (:Genre {name: 'Fantasía'})-[:HAS_BOOK]->(book);
+MATCH (genre:Genre {name: 'Fantasía'})
+CREATE (book)-[:BELONG_TO]->(genre);
 
 MATCH (book:Book {title: 'Harry Potter y el Cáliz de Fuego'})
-CREATE (:Genre {name: 'Fantasía'})-[:HAS_BOOK]->(book);
+MATCH (genre:Genre {name: 'Fantasía'})
+CREATE (book)-[:BELONG_TO]->(genre);
 
 MATCH (book:Book {title: 'Harry Potter y la Orden del Fénix'})
-CREATE (:Genre {name: 'Fantasía'})-[:HAS_BOOK]->(book);
+MATCH (genre:Genre {name: 'Fantasía'})
+CREATE (book)-[:BELONG_TO]->(genre);
 
 MATCH (book:Book {title: 'Harry Potter y el Misterio del Príncipe'})
-CREATE (:Genre {name: 'Fantasía'})-[:HAS_BOOK]->(book);
+MATCH (genre:Genre {name: 'Fantasía'})
+CREATE (book)-[:BELONG_TO]->(genre);
 
 MATCH (book:Book {title: 'Harry Potter y las Reliquias de la Muerte'})
-CREATE (:Genre {name: 'Fantasía'})-[:HAS_BOOK]->(book);
+MATCH (genre:Genre {name: 'Fantasía'})
+CREATE (book)-[:BELONG_TO]->(genre);
 
 MATCH (book:Book {title: 'Cien años de soledad'})
-CREATE (:Genre {name: 'Realismo mágico'})-[:HAS_BOOK]->(book);
-
+MATCH (genre:Genre {name: 'Realismo mágico'})
+CREATE (book)-[:BELONG_TO]->(genre);
 
 
 CREATE (Sharis:User {name:'Sharis'}),
@@ -66,6 +77,11 @@ WHERE book.title IN ['Cien años de soledad']
 MATCH (user:User)
 WHERE user.name = 'Pedro'
 CREATE (user)-[:READ {ranking:3}]->(book);
+
+MATCH (u1:User {name: 'Leonel'}), (u2:User {name: 'Sharis'})
+CREATE (u1)-[:FOLLOWS]->(u2);
+MATCH (u3:User {name: 'Allan'}), (u4:User {name: 'Pedro'})
+CREATE (u3)-[:FOLLOWS]->(u4);
 
 MATCH (book:Book)
 WITH book, [(user)-[r:READ]->(book) WHERE r.ranking IS NOT NULL | r.ranking] AS rankings
