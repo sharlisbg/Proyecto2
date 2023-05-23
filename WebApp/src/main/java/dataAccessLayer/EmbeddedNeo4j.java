@@ -57,7 +57,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
     }
     
-    public LinkedList<String> getActors()
+    /*public LinkedList<String> getActors()
     {
     	 try ( Session session = driver.session() )
          {
@@ -82,9 +82,42 @@ public class EmbeddedNeo4j implements AutoCloseable{
              
              return actors;
          }
+    }*/
+
+    /**
+     * El metodo getBooks obtiene en un LinkedList los nombres de todos los libros
+     * @return un Linked List con los nombres de los libros
+     */
+    public LinkedList<String> getBooks()
+    {
+    	 try ( Session session = driver.session() )
+         {
+    		 
+    		 
+    		 LinkedList<String> books = session.readTransaction( new TransactionWork<LinkedList<String>>()
+             {
+                 @Override
+                 public LinkedList<String> execute( Transaction tx )
+                 {
+                     Result result = tx.run( "MATCH (book:Book) RETURN book.name");
+                     LinkedList<String> mybooks = new LinkedList<String>();
+                     List<Record> registros = result.list();
+                     for (int i = 0; i < registros.size(); i++) {
+                    	 //myactors.add(registros.get(i).toString());
+                    	 mybooks.add(registros.get(i).get("book.name").asString());
+                     }
+                     
+                     return mybooks;
+                 }
+             } );
+             
+             return books;
+         }
     }
+
     
-    public LinkedList<String> getMoviesByActor(String actor)
+    
+    /*public LinkedList<String> getMoviesByActor(String actor)
     {
    	 try ( Session session = driver.session() )
         {
@@ -109,8 +142,79 @@ public class EmbeddedNeo4j implements AutoCloseable{
             
             return actors;
         }
+   }*/
+
+   /** getBooksbyLastRead es un metodo que recomiendo libros basado en la ultima lectura realizada
+    * @param lastread es el nombre de la ultima lectura realizada por el usuario
+    * @return un LinkedList con los nombres de las recomendaciones de libros
+    */
+   public LinkedList<String> getBooksbyLastRead(String lastread)
+    {
+   	 try ( Session session = driver.session() )
+        {
+   		 
+   		 
+   		 LinkedList<String> books = session.readTransaction( new TransactionWork<LinkedList<String>>()
+            {
+                @Override
+                public LinkedList<String> execute( Transaction tx )
+                {
+                    //Result result = tx.run( "MATCH (tom:Person {name: \"" + actor + "\"})-[:ACTED_IN]->(actorMovies) RETURN actorMovies.title");
+                    Result result = tx.run( "MATCH(persona:Person) -[HAS_READ]-> (book:Book{name: \"" + lastread + "\"})");
+                    LinkedList<String> mybooks = new LinkedList<String>();
+                    List<Record> registros = result.list();
+                    for (int i = 0; i < registros.size(); i++) {
+                   	 //myactors.add(registros.get(i).toString());
+                   	 mybooks.add(registros.get(i).get("book.name").asString());
+                    }
+                    
+                    return mybooks;
+                }
+            } );
+            
+            return books;
+        }
    }
-    
+
+
+
+
+
+   /**
+    * getBooksbyEditorial es un metodo que obtiene todos los libros de una editorial en especifico
+    * que esten en nuestra base de datos
+    * @param editorial es el nombre de la editorial que se desea encontrar
+    * @return un LinkedList con los nombres de los libros
+    */
+   public LinkedList<String> getBooksbyEditorial(String editorial)
+    {
+   	 try ( Session session = driver.session() )
+        {
+   		 
+   		 
+   		 LinkedList<String> books = session.readTransaction( new TransactionWork<LinkedList<String>>()
+            {
+                @Override
+                public LinkedList<String> execute( Transaction tx )
+                {
+                    //Result result = tx.run( "MATCH (tom:Person {name: \"" + actor + "\"})-[:ACTED_IN]->(actorMovies) RETURN actorMovies.title");
+                    Result result = tx.run( "MATCH(book:Book {editorial: \"" + editorial + "\"}) RETURN book.name");
+                    LinkedList<String> mybooks = new LinkedList<String>();
+                    List<Record> registros = result.list();
+                    for (int i = 0; i < registros.size(); i++) {
+                   	 //myactors.add(registros.get(i).toString());
+                   	 mybooks.add(registros.get(i).get("book.name").asString());
+                    }
+                    
+                    return mybooks;
+                }
+            } );
+            
+            return books;
+        }
+   }
+
+     
     public String insertMovie(String title, int releaseYear, String tagline) {
     	try ( Session session = driver.session() )
         {
