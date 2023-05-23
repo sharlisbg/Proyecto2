@@ -161,7 +161,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 public LinkedList<String> execute( Transaction tx )
                 {
                     //Result result = tx.run( "MATCH (tom:Person {name: \"" + actor + "\"})-[:ACTED_IN]->(actorMovies) RETURN actorMovies.title");
-                    Result result = tx.run( "MATCH(libro:Book{name: \"" + author+"\"}) RETURN libro.name");
+                    Result result = tx.run( "MATCH(libro:Book{author: \"" + author+"\"}) RETURN libro.name");
                     LinkedList<String> mybooks = new LinkedList<String>();
                     List<Record> registros = result.list();
                     for (int i = 0; i < registros.size(); i++) {
@@ -183,33 +183,30 @@ public class EmbeddedNeo4j implements AutoCloseable{
     * @param lastread es el nombre de la ultima lectura realizada por el usuario
     * @return un LinkedList con los nombres de las recomendaciones de libros
     */
-   public LinkedList<String> getBooksbyLastRead(String lastread)
-    {
-   	 try ( Session session = driver.session() )
-        {
-   		 
-   		 
-   		 LinkedList<String> books = session.readTransaction( new TransactionWork<LinkedList<String>>()
-            {
+    public LinkedList<String> getBooksbyLastRead(String lastread) {
+        try (Session session = driver.session()) {
+            LinkedList<String> books = session.readTransaction(new TransactionWork<LinkedList<String>>() {
                 @Override
-                public LinkedList<String> execute( Transaction tx )
-                {
-                    //Result result = tx.run( "MATCH (tom:Person {name: \"" + actor + "\"})-[:ACTED_IN]->(actorMovies) RETURN actorMovies.title");
-                    Result result = tx.run( "MATCH(persona:Person) -[HAS_READ]-> (book:Book{name: \"" + lastread + "\"})");
+                public LinkedList<String> execute(Transaction tx) {
+                    String query = "MATCH (persona:Person)-[:HAS_READ]->(libro:Book{name:\"" + lastread + "\"}) " +
+                            "MATCH (persona)-[rating:HAS_READ]->(librodos:Book) " +
+                            "WHERE rating.rating > 3 " +
+                            "RETURN librodos";
+    
+                    Result result = tx.run(query);
                     LinkedList<String> mybooks = new LinkedList<String>();
                     List<Record> registros = result.list();
                     for (int i = 0; i < registros.size(); i++) {
-                   	 //myactors.add(registros.get(i).toString());
-                   	 mybooks.add(registros.get(i).get("book.name").asString());
+                        mybooks.add(registros.get(i).get("librodos").asString());
                     }
-                    
+    
                     return mybooks;
                 }
-            } );
-            
+            });
+    
             return books;
         }
-   }
+    }
 
 
 
