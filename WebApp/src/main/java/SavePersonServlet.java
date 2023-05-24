@@ -1,8 +1,3 @@
-
-<<<<<<< HEAD
-=======
-
->>>>>>> b1a8bb6c571c50757617d745ea84b95fb596b647
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedList;
@@ -45,20 +40,12 @@ public class SavePersonServlet extends HttpServlet {
 	 	
 	 	JSONArray insertionResult = new JSONArray();
 	 	
-<<<<<<< HEAD
-	 	String name = request.getParameter("name");
-	 	
-	 	 try ( EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j( "bolt://44.215.127.186:7687", "neo4j", "elapse-career-realignments" ) )
-	        {
-			 	String myResultTx = neo4jDriver.insertPerson(name);
-=======
 	 	String personName = request.getParameter("name");
 	 	
 	 	// preguntar si se debe cambiar algo aqui
 	 	 try ( EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j( "bolt://44.213.125.209:7687", "neo4j", "maintenance-glossary-goal") )
 	        {
 			 	String myResultTx = neo4jDriver.insertPerson(personName);
->>>>>>> b1a8bb6c571c50757617d745ea84b95fb596b647
 	        	
 			 	myResponse.put("resultado", myResultTx);
 	        } catch (Exception e) {
@@ -79,10 +66,4 @@ public class SavePersonServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
-<<<<<<< HEAD
 }
-=======
-}
-
->>>>>>> b1a8bb6c571c50757617d745ea84b95fb596b647
