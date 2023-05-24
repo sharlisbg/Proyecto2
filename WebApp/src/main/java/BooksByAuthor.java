@@ -1,8 +1,5 @@
 
-<<<<<<< HEAD
-=======
 
->>>>>>> b1a8bb6c571c50757617d745ea84b95fb596b647
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedList;
@@ -13,26 +10,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import dataAccessLayer.EmbeddedNeo4j;
 
+import org.json.simple.JSONArray;
+
 /**
-<<<<<<< HEAD
- * Servlet implementation class SavePersonServlet
-=======
- * Servlet implementation class SaveMovieServlet
->>>>>>> b1a8bb6c571c50757617d745ea84b95fb596b647
+ * Servlet implementation class MoviesByActor
  */
-@WebServlet("/SavePersonServlet")
-public class SavePersonServlet extends HttpServlet {
+@WebServlet("/BooksByAuthor")
+public class BooksByAuthor extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SavePersonServlet() {
+    public BooksByAuthor() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -47,33 +41,28 @@ public class SavePersonServlet extends HttpServlet {
 	 	response.setCharacterEncoding("UTF-8");
 	 	JSONObject myResponse = new JSONObject();
 	 	
-	 	JSONArray insertionResult = new JSONArray();
+	 	JSONArray LibrosAutor = new JSONArray();
 	 	
-<<<<<<< HEAD
-	 	String name = request.getParameter("name");
-	 	
-	 	 try ( EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j( "bolt://44.215.127.186:7687", "neo4j", "elapse-career-realignments" ) )
+	 	String myAuthor = request.getParameter("author");
+	 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://44.213.125.209:7687", "neo4j", "maintenance-glossary-goal" ) )
 	        {
-			 	String myResultTx = neo4jDriver.insertPerson(name);
-=======
-	 	String personName = request.getParameter("name");
-	 	
-	 	// preguntar si se debe cambiar algo aqui
-	 	 try ( EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j( "bolt://44.213.125.209:7687", "neo4j", "maintenance-glossary-goal") )
-	        {
-			 	String myResultTx = neo4jDriver.insertPerson(personName);
->>>>>>> b1a8bb6c571c50757617d745ea84b95fb596b647
+			 	LinkedList<String> myactors = greeter.getBooksbyAuthor(myAuthor);
+			 	
+			 	for (int i = 0; i < myactors.size(); i++) {
+			 		 //out.println( "<p>" + myactors.get(i) + "</p>" );
+			 		LibrosAutor.add(myactors.get(i));
+			 	}
 	        	
-			 	myResponse.put("resultado", myResultTx);
 	        } catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				myResponse.put("resultado", "Error: " + e.getMessage());
 			}
 	 	
-	 	
+	 	myResponse.put("conteo", LibrosAutor.size()); //Guardo la cantidad de actores
+	 	myResponse.put("libros", LibrosAutor);
 	 	out.println(myResponse);
-	 	out.flush();
+	 	out.flush();  
+	 	
 	}
 
 	/**
@@ -84,9 +73,5 @@ public class SavePersonServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
-<<<<<<< HEAD
-}
-=======
 }
 
->>>>>>> b1a8bb6c571c50757617d745ea84b95fb596b647
