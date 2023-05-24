@@ -17,16 +17,16 @@ import dataAccessLayer.EmbeddedNeo4j;
 import org.json.simple.JSONArray;
 
 /**
- * Servlet implementation class MoviesByActor
+ * Servlet implementation class BookByLastRead
  */
-@WebServlet("/MoviesByActor")
-public class MoviesByActor extends HttpServlet {
+@WebServlet("/BookByLastRead")
+public class BookByLastRead extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MoviesByActor() {
+    public BookByLastRead() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,16 +41,15 @@ public class MoviesByActor extends HttpServlet {
 	 	response.setCharacterEncoding("UTF-8");
 	 	JSONObject myResponse = new JSONObject();
 	 	
-	 	JSONArray PeliculasActor = new JSONArray();
+	 	JSONArray LibrosLeidos = new JSONArray();
 	 	
-	 	String myActor = request.getParameter("actor_name");
+	 	String myBook = request.getParameter("name");
 	 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://44.213.125.209:7687", "neo4j", "maintenance-glossary-goal" ) )
 	        {
-			 	LinkedList<String> myactors = greeter.getMoviesByActor(myActor);
+			 	LinkedList<String> mybooks = greeter.getBooksbyLastRead(myBook);
 			 	
-			 	for (int i = 0; i < myactors.size(); i++) {
-			 		 //out.println( "<p>" + myactors.get(i) + "</p>" );
-			 		PeliculasActor.add(myactors.get(i));
+			 	for (int i = 0; i < mybooks.size(); i++) {
+                    LibrosLeidos.add(mybooks.get(i));
 			 	}
 	        	
 	        } catch (Exception e) {
@@ -58,8 +57,8 @@ public class MoviesByActor extends HttpServlet {
 				e.printStackTrace();
 			}
 	 	
-	 	myResponse.put("conteo", PeliculasActor.size()); //Guardo la cantidad de actores
-	 	myResponse.put("peliculas", PeliculasActor);
+	 	myResponse.put("conteo", LibrosLeidos.size()); //Guardo la cantidad de autores
+	 	myResponse.put("libros", LibrosLeidos);
 	 	out.println(myResponse);
 	 	out.flush();  
 	 	

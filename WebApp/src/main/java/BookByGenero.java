@@ -1,5 +1,3 @@
-
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedList;
@@ -10,22 +8,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import dataAccessLayer.EmbeddedNeo4j;
 
+import org.json.simple.JSONArray;
+
 /**
- * Servlet implementation class SaveMovieServlet
+ * Servlet implementation class BookByGenero
  */
-@WebServlet("/SaveMovieServlet")
-public class SaveMovieServlet extends HttpServlet {
+@WebServlet("/BookByGenero")
+public class BookByGenero extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SaveMovieServlet() {
+    public BookByGenero() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,26 +39,27 @@ public class SaveMovieServlet extends HttpServlet {
 	 	response.setCharacterEncoding("UTF-8");
 	 	JSONObject myResponse = new JSONObject();
 	 	
-	 	JSONArray insertionResult = new JSONArray();
+	 	JSONArray LibrosGenre = new JSONArray();
 	 	
-	 	String movieTitle = request.getParameter("title");
-	 	String releaseYear = request.getParameter("release_year");
-	 	String tagline = request.getParameter("tagline");
-	 	
-	 	 try ( EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j( "bolt://44.213.125.209:7687", "neo4j", "maintenance-glossary-goal") )
+	 	String myGenre = request.getParameter("genre");
+	 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://44.213.125.209:7687", "neo4j", "maintenance-glossary-goal" ) )
 	        {
-			 	String myResultTx = neo4jDriver.insertMovie(movieTitle, Integer.parseInt(releaseYear), tagline);
+			 	LinkedList<String> mygenrs = greeter.getBooksbyGenero(myGenre);
+			 	
+			 	for (int i = 0; i < mygenrs.size(); i++) {
+                      LibrosGenre.add(mygenrs.get(i));
+			 	}
 	        	
-			 	myResponse.put("resultado", myResultTx);
 	        } catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				myResponse.put("resultado", "Error: " + e.getMessage());
 			}
 	 	
-	 	
+	 	myResponse.put("conteo", LibrosGenre.size()); //Guardo la cantidad de generos extraídos
+	 	myResponse.put("Generos", LibrosGenre);
 	 	out.println(myResponse);
-	 	out.flush();
+	 	out.flush();  
+	 	
 	}
 
 	/**

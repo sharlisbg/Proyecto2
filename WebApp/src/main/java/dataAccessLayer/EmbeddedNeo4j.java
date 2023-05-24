@@ -213,12 +213,12 @@ public class EmbeddedNeo4j implements AutoCloseable{
 
 
    /**
-    * getBooksbyEditorial es un metodo que obtiene todos los libros de una editorial en especifico
+    * getBooksbyGenero es un metodo que obtiene todos los libros de una genero en especifico
     * que esten en nuestra base de datos
-    * @param editorial es el nombre de la editorial que se desea encontrar
+    * @param editorial es el nombre del genero que se desea encontrar
     * @return un LinkedList con los nombres de los libros
     */
-   public LinkedList<String> getBooksbyEditorial(String editorial)
+   public LinkedList<String> getBooksbyGenero(String genero)
     {
    	 try ( Session session = driver.session() )
         {
@@ -230,7 +230,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 public LinkedList<String> execute( Transaction tx )
                 {
                     //Result result = tx.run( "MATCH (tom:Person {name: \"" + actor + "\"})-[:ACTED_IN]->(actorMovies) RETURN actorMovies.title");
-                    Result result = tx.run( "MATCH(book:Book {editorial: \"" + editorial + "\"}) RETURN book.name");
+                    Result result = tx.run( "MATCH(book:Book {genre: \"" + genre + "\"}) RETURN book.name");
                     LinkedList<String> mybooks = new LinkedList<String>();
                     List<Record> registros = result.list();
                     for (int i = 0; i < registros.size(); i++) {
