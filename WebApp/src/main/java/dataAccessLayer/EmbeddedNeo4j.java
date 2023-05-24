@@ -218,7 +218,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
     * @param editorial es el nombre del genero que se desea encontrar
     * @return un LinkedList con los nombres de los libros
     */
-   public LinkedList<String> getBooksbyGenero(String genero)
+   public LinkedList<String> getBooksbyGenero(String genre)
     {
    	 try ( Session session = driver.session() )
         {
