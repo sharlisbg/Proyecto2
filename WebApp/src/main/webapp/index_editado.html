@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Ejemplo Neo4j</title>
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: white;
+        }
+
+        .book-box {
+            background-color: lightgray;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+        }
+
+        .title {
+            color: blue;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .form-control {
+            border-radius: 20px;
+            padding: 15px;
+        }
+
+        .form-control::placeholder {
+            color: lightgray;
+        }
+
+        .btn-primary {
+            background-color: blue;
+            color: white;
+            border-radius: 20px;
+            padding: 15px 25px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: #0044cc;
+        }
+
+        .btn-recommendation {
+            background-color: orange;
+            color: white;
+            border-radius: 20px;
+            padding: 15px 25px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-recommendation:hover {
+            background-color: #ff8c00;
+        }
+
+        .link-area {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4">
+                            <div class="book-box">
+                                <h1 class="title">Creación de Usuario</h1>
+                                <br>
+                                <div style="text-align: center;">
+                                    <input type="text" class="form-control" placeholder="Ingrese nombre">
+                                </div>
+                                <br>
+                                <div style="text-align: center;">
+                                    <button type="submit" class="btn btn-primary form-control">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4">
+                            <div class="book-box">
+                                <h1 class="title">Ingresar nuevo libro a la biblioteca</h1>
+                                <br>
+                                <div style="text-align: center;">
+                                    <input type="text" class="form-control" placeholder="Ingrese nombre">
+                                </div>
+                                <br>
+                                <div style="text-align: center;">
+                                    <input type="text" class="form-control" placeholder="Ingrese autor">
+                                </div>
+                                <br>
+                                <div style="text-align: center;">
+                                    <input type="text" class="form-control" placeholder="Ingrese editorial">
+                                </div>
+                                <br>
+                                <div style="text-align: center;">
+                                    <input type="text" class="form-control" placeholder="Ingrese género">
+                                </div>
+                                <br>
+                                <div style="text-align: center;">
+                                    <button type="submit" class="btn btn-primary form-control">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4">
+                            <div class="book-box">
+                                <h1 class="title">Recomendación de libros</h1>
+                                <br>
+                                <div style="text-align: center;">
+                                    <a href="link_ultimo_libro_leido.html" class="btn btn-recommendation">Ultimo libro leido</a>
+                                    <a href="link_por_autor.html" class="btn btn-recommendation">Por autor</a>
+                                    <a href="link_por_genero.html" class="btn btn-recommendation">Por género</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
