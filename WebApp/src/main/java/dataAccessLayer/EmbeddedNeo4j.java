@@ -311,7 +311,14 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
     }
 
-    public void createReadingRelationshipWithRating(String personName, String bookName, int rating) {
+
+     /**
+     * insertRelationshipWithRating es el metodo que genera una relación entre una persona, el libro que leyó y la calificación que le da
+     * @param name es el nombre de la persona
+     * @param bookName es el nombre del libro
+     * @param rating es el rating que se le da al libro 
+     */
+    public void insertRelationshipWithRating(String personName, String bookName, int rating) {
         try (Session session = driver.session()) 
         {
 
@@ -319,10 +326,14 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 @Override
                 public Void execute( Transaction tx ) 
                 {
+                    /*
+                     * MATCH(persona:Person{name:"Sharis"}),(libro:Book{name:"El nombre de la Rosa"})
+                      CREATE(persona) -[:HAS_READ{rating:5}]-> (libro)
+                     */
                     tx.run("MATCH (p:Person {name: $personName}), (b:Book {name: $bookName}) " +
                             "CREATE (p)-[:HAS_READ {rating: $rating}]->(b)",
                             parameters("personName", personName, "bookName", bookName, "rating", rating));
-                            
+
                     return null;
                 }
             });
