@@ -247,29 +247,6 @@ public class EmbeddedNeo4j implements AutoCloseable{
    }
 
      
-    /*public String insertMovie(String title, int releaseYear, String tagline) {
-    	try ( Session session = driver.session() )
-        {
-   		 
-   		 String result = session.writeTransaction( new TransactionWork<String>()
-   		 
-            {
-                @Override
-                public String execute( Transaction tx )
-                {
-                    tx.run( "CREATE (Test:Movie {title:'" + title + "', released:"+ releaseYear +", tagline:'"+ tagline +"'})");
-                    
-                    return "OK";
-                }
-            }
-   		 
-   		 );
-            
-            return result;
-        } catch (Exception e) {
-        	return e.getMessage();
-        }
-    }*/
 
     /**
      * insertBook es el metodo que agrega un libro como nodo a la base de datos
@@ -333,5 +310,24 @@ public class EmbeddedNeo4j implements AutoCloseable{
         	return e.getMessage();
         }
     }
+
+    public void createReadingRelationshipWithRating(String personName, String bookName, int rating) {
+        try (Session session = driver.session()) 
+        {
+
+            session.writeTransaction(new TransactionWork<Void>() {
+                @Override
+                public Void execute( Transaction tx ) 
+                {
+                    tx.run("MATCH (p:Person {name: $personName}), (b:Book {name: $bookName}) " +
+                            "CREATE (p)-[:HAS_READ {rating: $rating}]->(b)",
+                            parameters("personName", personName, "bookName", bookName, "rating", rating));
+                            
+                    return null;
+                }
+            });
+        }
+    }
+    
 
 }
