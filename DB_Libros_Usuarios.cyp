@@ -1,4 +1,52 @@
-CREATE (:Book {title: 'Animal Farm', author: 'George Orwell', ranking : 0.0})
+CREATE (:Book {name: 'Animal Farm', author: 'George Orwell', editorial : Penguin, genre: Ficcion})
+CREATE (:Book {name: 'La Fiesta del Chivo', author: 'Mario Vargas Llosa', editorial : 'Penguin', genre: 'Novela Historica'})
+CREATE (:Book {name: 'Tiempos Recios', author: 'Mario Vargas Llosa', editorial : 'Penguin', genre: 'Novela Historica'})
+CREATE (:Book {name: 'La Casa Verde', author: 'Mario Vargas Llosa', editorial : 'Penguin', genre: 'Novela'})
+CREATE (:Book {name: 'Carta al Padre', author: 'Franz Kafka', editorial : 'Penguin', genre: 'No Ficcion'})
+CREATE (:Book {name: 'La Metamorfosis', author: 'Franz Kafka', editorial : 'Penguin', genre: 'Novela Corta'})
+CREATE (:Book {name: 'El Nombre de la Rosa', author: 'Umberto Eco', editorial : 'Penguin', genre: 'Novela Historica'})
+CREATE (:Book {name: '100 años de Soledad', author: 'Gabriel Garcia Marquez', editorial : 'Diana', genre: 'Ficcion'})
+CREATE (:Book {name: 'El Pensamiento de Socrates', author: 'A.E. Taylor', editorial : 'Fondo de Cultura Economica', genre: 'Filosofia'})
+CREATE (:Book {name: 'Gorgias and Timaeus', author: 'Plato', editorial : 'PDover', genre: 'Filosofia})
+CREATE (:Book {name: 'The Republic', author: 'Plato', editorial : 'Dover', genre: 'Filosofia'})
+CREATE (:Book {name: 'Six Great Dialogues', author: 'Plato', editorial : 'Dover', genre: 'Filosofia'})
+CREATE (:Book {name: 'Cartas a Lucilio', author: 'Seneca', editorial : 'Ariel', genre: 'Filosofia'})
+CREATE (:Book {name: 'Manual de Vida', author: 'Epicteto', editorial : 'Alianza', genre: 'Filosofia'})
+CREATE (:Book {name: 'Un Mundo Feliz', author: 'Aldo Huxley', editorial : 'Penguin', genre: 'Novela'})
+CREATE (:Book {name: 'Narciso y Goldmundo', author: 'Herman Hesse', editorial : 'Seix-Barral', genre: 'Novela'})
+CREATE (:Book {name: 'Luz de Agosto', author: 'Willaim Faulkner', editorial : 'Seix-Barral', genre: 'Novela'})
+CREATE (:Book {name: 'La Nausea', author: 'Jean-Paul Sartre', editorial : 'Seix-Barral', genre: 'Filosofia'})
+CREATE (:Book {name: 'Crimen y Castigo', author: 'Fyodor Dostoievski', editorial : 'Austral', genre: 'Novela'})
+CREATE (:Book {name: 'Ana Karenina', author: 'Leo Tolstoi', editorial : 'Penguin', genre: 'Novela'})
+CREATE (:Book {name: 'El Conde de Montecristo', author: 'Alexandre Dumas', editorial : 'Penguin', genre: 'Novela'})
+CREATE (:Book {name: 'Los Tres Mosqueteros', author: 'Alexandre Dumas', editorial : 'Penguin', genre: 'Novela'})
+CREATE (:Book {name: 'El Lazarillo de Tormes', author: 'Desconocido', editorial : 'Penguin', genre: 'Picaresca'})
+CREATE (:Book {name: 'El Hidalgo Don Quijote de la Mancha', author: 'Miguel de Cervantes Saavedra', editorial : 'Mestas', genre: 'Novela'})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 CREATE (:Book {title: 'Harry Potter y la Piedra Filosofal', author: 'J.K. Rowling', ranking : 0.0})
 CREATE (:Book {title: 'Harry Potter y la Cámara Secreta', author: 'J.K. Rowling', ranking : 0.0})
 CREATE (:Book {title: 'Harry Potter y el Prisionero de Azkaban', author: 'J.K. Rowling', ranking : 0.0})
