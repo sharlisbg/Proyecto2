@@ -15,7 +15,10 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: white;
+            background-image: url('https://img.freepik.com/fotos-premium/mesa-madera_36051-46.jpg?w=1060');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
         }
 
         .book-box {
@@ -87,7 +90,7 @@
                                 </div>
                                 <br>
                                 <div style="text-align: center;">
-                                    <button type="submit" class="btn btn-primary form-control">Guardar</button>
+                                    <button type="submit" id="guardar-usuario-btn" class="btn btn-primary form-control">Guardar</button>
                                 </div>
                             </div>
                         </div>
@@ -117,7 +120,35 @@
                                 </div>
                                 <br>
                                 <div style="text-align: center;">
-                                    <button type="submit" class="btn btn-primary form-control">Guardar</button>
+                                    <button type="submit" id="guardar-libro-btn" class="btn btn-primary form-control">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4"></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-4"></div>
+                        <div class="col-lg-4">
+                            <div class="book-box">
+                                <h1 class="title">Ingresar usuario</h1>
+                                <br>
+                                <div style="text-align: center;">
+                                    <input type="text" class="form-control" placeholder="Ingrese nombre">
+                                </div>
+                                <br>
+                                <h1 class="title">Ingresar último libro leído</h1>
+                                <br>
+                                <div style="text-align: center;">
+                                    <input type="text" class="form-control" placeholder="Ingrese nombre del libro">
+                                </div>
+                                <br>
+                                <div style="text-align: center;">
+                                    <input type="text" class="form-control" placeholder="Ingrese rating 1 - 5">
+                                </div>
+                                <br>
+                                <div style="text-align: center;">
+                                    <button type="submit" id="ingresar-usuario-btn" class="btn btn-primary form-control">Ingresar</button>
                                 </div>
                             </div>
                         </div>
