@@ -134,7 +134,7 @@
 		$.ajax( {
 			
 			type: "GET",
-			url: '/Seccion40Grupo7/PersonServlet?name=' + $('#txt-usuario-nombre').val(),
+			url: '/Seccion40Grupo7/SavePersonServlet?name=' + $('#txt-usuario-nombre').val(),
 			success: function(data) {
 			    alert("Resultado: " + data.resultado);
 			}
@@ -149,7 +149,7 @@
 		$.ajax( {
 			
 			type: "GET",
-			url: '/Seccion40Grupo7/SaveMovieServlet?author=' + $('#txt-ingrese-autor').val() + '&name=' + $('#txt-ingrese-nombre').val() + '&editorial=' + $('#txt-ingrese-editorial').val() + '&genre=' + $('#txt-ingrese-genero').val() ,
+			url: '/Seccion40Grupo7/SaveBookServlet?author=' + $('#txt-ingrese-autor').val() + '&name=' + $('#txt-ingrese-nombre').val() + '&editorial=' + $('#txt-ingrese-editorial').val() + '&genre=' + $('#txt-ingrese-genero').val() ,
 			success: function(data) {
 			    alert("Resultado: " + data.resultado);
 			}
