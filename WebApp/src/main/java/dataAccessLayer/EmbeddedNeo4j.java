@@ -57,32 +57,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
     }
     
-    /*public LinkedList<String> getActors()
-    {
-    	 try ( Session session = driver.session() )
-         {
-    		 
-    		 
-    		 LinkedList<String> actors = session.readTransaction( new TransactionWork<LinkedList<String>>()
-             {
-                 @Override
-                 public LinkedList<String> execute( Transaction tx )
-                 {
-                     Result result = tx.run( "MATCH (people:Person) RETURN people.name");
-                     LinkedList<String> myactors = new LinkedList<String>();
-                     List<Record> registros = result.list();
-                     for (int i = 0; i < registros.size(); i++) {
-                    	 //myactors.add(registros.get(i).toString());
-                    	 myactors.add(registros.get(i).get("people.name").asString());
-                     }
-                     
-                     return myactors;
-                 }
-             } );
-             
-             return actors;
-         }
-    }*/
+
 
     /**
      * El metodo getBooks obtiene en un LinkedList los nombres de todos los libros
@@ -116,33 +91,6 @@ public class EmbeddedNeo4j implements AutoCloseable{
     }
 
     
-    
-    /*public LinkedList<String> getMoviesByActor(String actor)
-    {
-   	 try ( Session session = driver.session() )
-        {
-   		 
-   		 
-   		 LinkedList<String> actors = session.readTransaction( new TransactionWork<LinkedList<String>>()
-            {
-                @Override
-                public LinkedList<String> execute( Transaction tx )
-                {
-                    Result result = tx.run( "MATCH (tom:Person {name: \"" + actor + "\"})-[:ACTED_IN]->(actorMovies) RETURN actorMovies.title");
-                    LinkedList<String> myactors = new LinkedList<String>();
-                    List<Record> registros = result.list();
-                    for (int i = 0; i < registros.size(); i++) {
-                   	 //myactors.add(registros.get(i).toString());
-                   	 myactors.add(registros.get(i).get("actorMovies.title").asString());
-                    }
-                    
-                    return myactors;
-                }
-            } );
-            
-            return actors;
-        }
-   }*/
 
    /**
     * getBooksbyAuthor es un metodo que obtiene los libros escritos por un escritor particular

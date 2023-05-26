@@ -47,7 +47,7 @@ public class SaveBookServlet extends HttpServlet {
 	 	String editorial = request.getParameter("editorial");
         String genre = request.getParameter("genre");
 	 	
-	 	 try ( EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j( "bolt://44.213.125.209:7687", "neo4j", "maintenance-glossary-goal") )
+	 	 try ( EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j( "bolt://3.237.194.103:7687", "neo4j", "hardness-sunrise-pot") )
 	        {
 			 	String myResultTx = neo4jDriver.insertBook(author, name, editorial, genre);
 	        	

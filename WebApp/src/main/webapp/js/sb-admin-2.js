@@ -53,59 +53,88 @@
     e.preventDefault();
   });
   
-  //Evento del botón que me devuelve el listado de actores
-  $("#btn-search-actors").click(function(){
-		//alert("The button was clicked 1");
+
+	//Evento del botón que me devuelve el listado de libros por autor
+	$("#btn-buscar-autor").click(function(){
 				
 		$.ajax( {
 			
 			type: "GET",
-			url: '/Seccion40Grupo7/HelloServlet',
+			url: '/Seccion40Grupo7/BookByAuthor?book_name=' + $('#txt-buscar-ingrese-autor').val(),
 			success: function(data) {
 				//alert("Result" + data.resultado);
-			    var htmlActorsList = '<ul>';
-				$.each(data.actores, function(i,item){
-					  htmlActorsList += '<li>' + item + '</li>';
+			    var htmlAutorList = '<ul>';
+				$.each(data.libros, function(i,item){
+          htmlAutorList += '<li>' + item + '</li>';
 				});
-				htmlActorsList += '</ul>';
-				$('#div-listado-actores').html("");
-				$('#div-listado-actores').append(htmlActorsList);
+				htmlAutorList += '</ul>';
+				$('#').html("");
+				$('#div-listado-libros-por-autor').append(htmlAutorList);
 			}
 		} );
 		
 		
 	});
-	
-	//Evento del botón que me devuelve el listado de películas de un determinado actor
-	$("#btn-search-movies-by-actor").click(function(){
+
+
+
+	//Evento del botón que me devuelve el listado de libros por último leído
+	$("#btn-buscar-ultimo").click(function(){
 				
 		$.ajax( {
 			
 			type: "GET",
-			url: '/Seccion40Grupo7/MoviesByActor?actor_name=' + $('#txt-actor').val(),
+			url: '/Seccion40Grupo7/BookByLastRead?book_name=' + $('#txt-buscar-ingrese-nombre-libro').val(),
 			success: function(data) {
 				//alert("Result" + data.resultado);
-			    var htmlMovieList = '<ul>';
-				$.each(data.peliculas, function(i,item){
-					  htmlMovieList += '<li>' + item + '</li>';
+			    var htmlLastReadList = '<ul>';
+				$.each(data.libros, function(i,item){
+          htmlLastReadList += '<li>' + item + '</li>';
 				});
-				htmlMovieList += '</ul>';
-				$('#div-listado-actores').html("");
-				$('#div-listado-actores').append(htmlMovieList);
+				htmlLastReadList += '</ul>';
+				$('#').html("");
+				$('#div-listado-libros-ultimo-leido').append(htmlLastReadList);
 			}
 		} );
 		
 		
-	});
-	
-	
-	//Evento del botón que creara una nueva pelicula
-	$("#btn-insert-movie").click(function(){
+	}); 
+
+
+
+  	//Evento del botón que me devuelve el listado de libros por genero
+	$("#btn-buscar-genero").click(function(){
 				
 		$.ajax( {
 			
 			type: "GET",
-			url: '/Seccion40Grupo7/SaveMovieServlet?title=' + $('#txt-movie-title').val() + '&release_year=' + $('#txt-movie-release').val() + '&tagline=' + $('#txt-movie-tagline').val() ,
+			url: '/Seccion40Grupo7/BookByGenero?book_name=' + $('#txt-buscar-ingrese-genero-libro').val(),
+			success: function(data) {
+				//alert("Result" + data.resultado);
+			    var htmlGenreList = '<ul>';
+				$.each(data.libros, function(i,item){
+          htmlGenreList += '<li>' + item + '</li>';
+				});
+				htmlGenreList += '</ul>';
+				$('#').html("");
+				$('#div-listado-libros-por-genero').append(htmlGenreList);
+			}
+		} );
+		
+		
+	}); 
+
+
+
+	
+	
+	//Evento del botón que creara una nueva persona en el grafo
+	$("#guardar-usuario-btn").click(function(){
+				
+		$.ajax( {
+			
+			type: "GET",
+			url: '/Seccion40Grupo7/PersonServlet?name=' + $('#txt-usuario-nombre').val(),
 			success: function(data) {
 			    alert("Resultado: " + data.resultado);
 			}
@@ -113,5 +142,39 @@
 		
 		
 	});
+
+  //Evento del botón que creara un nuevo libro
+	$("#guardar-libro-btn").click(function(){
+		
+		$.ajax( {
+			
+			type: "GET",
+			url: '/Grupo20/SaveMovieServlet?author=' + $('#txt-ingrese-autor').val() + '&name=' + $('#txt-ingrese-nombre').val() + '&editorial=' + $('#txt-ingrese-editorial').val() + '&genre=' + $('#txt-ingrese-genero').val() ,
+			success: function(data) {
+			    alert("Resultado: " + data.resultado);
+			}
+		} );
+		
+		
+	});
+
+
+
+  //Evento del botón que creara una nueva relación
+	$("#ingresar-usuario-btn").click(function(){
+				
+		$.ajax( {
+			
+			type: "GET",
+			url: '/Seccion40Grupo7/SaveRelationshipServlet?personName=' + $('#txt-nombre-usuario-ingreso').val() + '&bookName=' + $('#txt-nombre-libro-ingrese').val() + '&rating=' + $('#txt-rating-libro-ingrese').val() ,
+			success: function(data) {
+			    alert("Resultado: " + data.resultado);
+			}
+		} );
+		
+		
+	});
+
+
 
 })(jQuery); // End of use strict

@@ -42,7 +42,7 @@ public class BookByGenero extends HttpServlet {
 	 	JSONArray LibrosGenre = new JSONArray();
 	 	
 	 	String myGenre = request.getParameter("genre");
-	 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://44.213.125.209:7687", "neo4j", "maintenance-glossary-goal" ) )
+	 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://3.237.194.103:7687", "neo4j", "hardness-sunrise-pot" ) )
 	        {
 			 	LinkedList<String> mygenrs = greeter.getBooksbyGenero(myGenre);
 			 	
