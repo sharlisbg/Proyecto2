@@ -149,7 +149,7 @@
 		$.ajax( {
 			
 			type: "GET",
-			url: '/Grupo20/SaveMovieServlet?author=' + $('#txt-ingrese-autor').val() + '&name=' + $('#txt-ingrese-nombre').val() + '&editorial=' + $('#txt-ingrese-editorial').val() + '&genre=' + $('#txt-ingrese-genero').val() ,
+			url: '/Seccion40Grupo7/SaveMovieServlet?author=' + $('#txt-ingrese-autor').val() + '&name=' + $('#txt-ingrese-nombre').val() + '&editorial=' + $('#txt-ingrese-editorial').val() + '&genre=' + $('#txt-ingrese-genero').val() ,
 			success: function(data) {
 			    alert("Resultado: " + data.resultado);
 			}
