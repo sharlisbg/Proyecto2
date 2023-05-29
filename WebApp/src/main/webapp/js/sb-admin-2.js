@@ -112,7 +112,7 @@
 			success: function(data) {
 				//alert("Result" + data.resultado);
 			    var htmlGenreList = '<ul>';
-				$.each(data.libros, function(i,item){
+				$.each(data.generos, function(i,item){
           htmlGenreList += '<li>' + item + '</li>';
 				});
 				htmlGenreList += '</ul>';

@@ -56,7 +56,7 @@ public class BookByGenero extends HttpServlet {
 			}
 	 	
 	 	myResponse.put("conteo", LibrosGenre.size()); //Guardo la cantidad de generos extraídos
-	 	myResponse.put("Generos", LibrosGenre);
+	 	myResponse.put("generos", LibrosGenre);
 	 	out.println(myResponse);
 	 	out.flush();  
 	 	
