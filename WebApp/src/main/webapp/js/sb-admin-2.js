@@ -65,10 +65,10 @@
 				//alert("Result" + data.resultado);
 			    var htmlAutorList = '<ul>';
 				$.each(data.libros, function(i,item){
-          htmlAutorList += '<li>' + item + '</li>';
+          			htmlAutorList += '<li>' + item + '</li>';
 				});
 				htmlAutorList += '</ul>';
-				$('#').html("");
+				$('#div-listado-libros-por-autor').html("");
 				$('#div-listado-libros-por-autor').append(htmlAutorList);
 			}
 		} );
@@ -92,7 +92,7 @@
           htmlLastReadList += '<li>' + item + '</li>';
 				});
 				htmlLastReadList += '</ul>';
-				$('#').html("");
+				$('#div-listado-libros-ultimo-leido').html("");
 				$('#div-listado-libros-ultimo-leido').append(htmlLastReadList);
 			}
 		} );
@@ -116,7 +116,7 @@
           htmlGenreList += '<li>' + item + '</li>';
 				});
 				htmlGenreList += '</ul>';
-				$('#').html("");
+				$('#div-listado-libros-por-genero').html("");
 				$('#div-listado-libros-por-genero').append(htmlGenreList);
 			}
 		} );
