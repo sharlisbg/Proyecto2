@@ -38,8 +38,8 @@ public class SaveRelationshipServlet extends HttpServlet {
 
         JSONArray insertionResult = new JSONArray();
         
-        String personName = request.getParameter("person");
-        String bookName = request.getParameter("book");
+        String personName = request.getParameter("personName");
+        String bookName = request.getParameter("bookName");
         int rating = Integer.parseInt(request.getParameter("rating"));
 
         try (EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j("bolt://44.192.100.207:7687", "neo4j", "load-aptitudes-humans")) 
