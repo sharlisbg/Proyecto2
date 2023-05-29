@@ -41,7 +41,7 @@ public class SaveRelationshipServlet extends HttpServlet {
         String bookName = request.getParameter("book");
         int rating = Integer.parseInt(request.getParameter("rating"));
 
-        try (EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j("bolt://3.237.194.103:7687", "neo4j", "hardness-sunrise-pot")) 
+        try (EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j("bolt://44.192.100.207:7687", "neo4j", "load-aptitudes-humans")) 
         {
             neo4jDriver.insertRelationshipWithRating(personName, bookName, rating);
 

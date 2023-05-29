@@ -44,7 +44,7 @@ public class BookByAuthor extends HttpServlet {
 	 	JSONArray LibrosAutor = new JSONArray();
 	 	
 	 	String myAuthor = request.getParameter("author");
-	 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://3.237.194.103:7687", "neo4j", "hardness-sunrise-pot" ) )
+	 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://44.192.100.207:7687", "neo4j", "load-aptitudes-humans" ) )
 	        {
 			 	LinkedList<String> myauthors = greeter.getBooksbyAuthor(myAuthor);
 			 	

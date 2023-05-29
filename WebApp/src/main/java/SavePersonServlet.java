@@ -43,7 +43,7 @@ public class SavePersonServlet extends HttpServlet {
 	 	String personName = request.getParameter("name");
 	 	
 	 	// preguntar si se debe cambiar algo aqui
-	 	 try ( EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j( "bolt://3.237.194.103:7687", "neo4j", "hardness-sunrise-pot") )
+	 	 try ( EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j( "bolt://44.192.100.207:7687", "neo4j", "load-aptitudes-humans") )
 	        {
 			 	String myResultTx = neo4jDriver.insertPerson(personName);
 	        	
