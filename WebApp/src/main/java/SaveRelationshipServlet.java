@@ -36,16 +36,17 @@ public class SaveRelationshipServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         JSONObject myResponse = new JSONObject();
 
-
+        JSONArray insertionResult = new JSONArray();
+        
         String personName = request.getParameter("person");
         String bookName = request.getParameter("book");
         int rating = Integer.parseInt(request.getParameter("rating"));
 
         try (EmbeddedNeo4j neo4jDriver = new EmbeddedNeo4j("bolt://44.192.100.207:7687", "neo4j", "load-aptitudes-humans")) 
         {
-            neo4jDriver.insertRelationshipWithRating(personName, bookName, rating);
+            String resultado = neo4jDriver.insertRelationshipWithRating(personName, bookName, rating);
 
-            myResponse.put("resultado", "Relación creada correctamente.");
+            myResponse.put("resultado", resultado);
 
         } catch (Exception e) {
             // TODO Auto-generated catch block

@@ -266,27 +266,58 @@ public class EmbeddedNeo4j implements AutoCloseable{
      * @param bookName es el nombre del libro
      * @param rating es el rating que se le da al libro 
      */
-    public void insertRelationshipWithRating(String personName, String bookName, int rating) {
-        try (Session session = driver.session()) 
+    public String insertRelationshipWithRating(String personName, String bookName, int rating) {
+    	try ( Session session = driver.session() )
         {
-
-            session.writeTransaction(new TransactionWork<Void>() {
+   		 
+   		 String result = session.writeTransaction( new TransactionWork<String>()
+   		 
+            {
                 @Override
-                public Void execute( Transaction tx ) 
+                public String execute( Transaction tx )
+                {
+                
+                	tx.run("MATCH (p:Person {name: '" +personName+ "'}), (b:Book {name: '"+ bookName +"'}) " +
+                            "CREATE (p)-[:HAS_READ {rating: "+rating+"}]->(b)");
+                    
+                    return "OK";
+                }
+            }
+   		 
+   		 );
+            
+            return result;
+        } catch (Exception e) {
+        	return e.getMessage();
+        }
+    }
+    	
+    	
+    	
+       /* try (Session session = driver.session()) 
+        {
+        	Result result = session.run("MATCH (p:Person {name: '" +personName+ "'}), (b:Book {name: '"+ bookName +"'}) " +
+                    "CREATE (p)-[:HAS_READ {rating: "+rating+"}]->(b)");
+
+            /*String result = session.writeTransaction(new TransactionWork<String>() {
+                @Override
+                public String execute( Transaction tx ) 
                 {
                     /*
                      * MATCH(persona:Person{name:"Sharis"}),(libro:Book{name:"El nombre de la Rosa"})
                       CREATE(persona) -[:HAS_READ{rating:5}]-> (libro)
                      */
-                    tx.run("MATCH (p:Person {name: $personName}), (b:Book {name: $bookName}) " +
+                    /*tx.run("MATCH (p:Person {name: $personName}), (b:Book {name: $bookName}) " +
                             "CREATE (p)-[:HAS_READ {rating: $rating}]->(b)",
                             parameters("personName", personName, "bookName", bookName, "rating", rating));
-
-                    return null;
+						
+                	tx.run("MATCH (p:Person {name: '" +personName+ "'}), (b:Book {name: '"+ bookName +"'}) " +
+                            "CREATE (p)-[:HAS_READ {rating: "+rating+"}]->(b)");
+                            
+                	
+                    return "ok";
                 }
             });
-        }
-    }
-    
-
+            return result; */
+        	
 }

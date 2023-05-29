@@ -1,1 +1,7 @@
+/BookByAuthor.class
+/BookByGenero.class
+/BookByLastRead.class
+/SaveBookServlet.class
+/SavePersonServlet.class
+/SaveRelationshipServlet.class
 /dataAccessLayer/
