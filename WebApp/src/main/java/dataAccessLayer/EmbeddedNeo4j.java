@@ -215,7 +215,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 public String execute( Transaction tx )
                 {
                     //tx.run( "CREATE (Test:Movie {title:'" + title + "', released:"+ releaseYear +", tagline:'"+ tagline +"'})");
-                    tx.run( "CREATE (book:Book {author:'" + author + "', name:"+ name +", editorial:'"+ editorial +"', genre:" + genre +"})");
+                    tx.run( "CREATE (book:Book {author:'" + author + "', name:'"+ name +"'', editorial:'"+ editorial +"', genre:'" + genre +"''})");
                     
                     return "OK";
                 }
