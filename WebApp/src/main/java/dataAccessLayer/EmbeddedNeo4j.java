@@ -109,7 +109,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 public LinkedList<String> execute( Transaction tx )
                 {
                     //Result result = tx.run( "MATCH (tom:Person {name: \"" + actor + "\"})-[:ACTED_IN]->(actorMovies) RETURN actorMovies.title");
-                    Result result = tx.run( "MATCH(libro:Book{author: \"" + author+"\"}) RETURN libro.name");
+                    Result result = tx.run( "MATCH(libro:Book{author: \"" + author  + "\"}) RETURN libro.name");
                     LinkedList<String> mybooks = new LinkedList<String>();
                     List<Record> registros = result.list();
                     for (int i = 0; i < registros.size(); i++) {
@@ -178,7 +178,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 public LinkedList<String> execute( Transaction tx )
                 {
                     //Result result = tx.run( "MATCH (tom:Person {name: \"" + actor + "\"})-[:ACTED_IN]->(actorMovies) RETURN actorMovies.title");
-                    Result result = tx.run( "MATCH(book:Book {genre: \"" + genre + "\"}) RETURN book.name");
+                    Result result = tx.run( "MATCH(book:Book {genre: \"" + genre  + "\"}) RETURN book.name");
                     LinkedList<String> mybooks = new LinkedList<String>();
                     List<Record> registros = result.list();
                     for (int i = 0; i < registros.size(); i++) {
