@@ -22,7 +22,6 @@
         }
 
         .book-box {
-            background-color: lightgray;
             padding: 20px;
             margin: 20px;
             border-radius: 5px;
@@ -71,6 +70,23 @@
             text-align: center;
             margin-top: 10px;
         }
+        
+        .title-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .title-wrapper h1 {
+            margin-right: 20px;
+        }
+        
+        .title-wrapper img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
     </style>
 </head>
 
@@ -79,8 +95,11 @@
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
                 <div class="container-fluid">
+                    <div class="title-wrapper">
+                        <h1 class="title">Libreria de Alejandría</h1>
+                        <img src="https://media.istockphoto.com/id/1035600822/es/foto/pila-de-libros-ardiendo.jpg?s=612x612&w=0&k=20&c=_qe6BRQLp8BxRTPc_jODu363uMwpKe8B4vF1NOd1c0c=" alt="Logo">
+                    </div>
                     <div class="row">
-                        <div class="col-lg-4"></div>
                         <div class="col-lg-4">
                             <div class="book-box">
                                 <h1 class="title">Creación de Usuario</h1>
@@ -94,11 +113,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4"></div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-4"></div>
                         <div class="col-lg-4">
                             <div class="book-box">
                                 <h1 class="title">Ingresar nuevo libro a la biblioteca</h1>
@@ -124,27 +138,22 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4"></div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg-4"></div>
                         <div class="col-lg-4">
                             <div class="book-box">
                                 <h1 class="title">Ingresar usuario</h1>
                                 <br>
                                 <div style="text-align: center;">
-                                    <input type="text" class="form-control" id = "txt-nombre-usuario-ingreso" placeholder="Ingrese nombre">
+                                    <input type="text" class="form-control" id="txt-nombre-usuario-ingreso" placeholder="Ingrese nombre">
                                 </div>
                                 <br>
                                 <h1 class="title">Ingresar último libro leído</h1>
                                 <br>
                                 <div style="text-align: center;">
-                                    <input type="text" class="form-control" id = "txt-nombre-libro-ingrese" placeholder="Ingrese nombre del libro">
+                                    <input type="text" class="form-control" id="txt-nombre-libro-ingrese" placeholder="Ingrese nombre del libro">
                                 </div>
                                 <br>
                                 <div style="text-align: center;">
-                                    <input type="text" class="form-control" id = "txt-rating-libro-ingrese" placeholder="Ingrese rating 1 - 5">
+                                    <input type="text" class="form-control" id="txt-rating-libro-ingrese" placeholder="Ingrese rating 1 - 5">
                                 </div>
                                 <br>
                                 <div style="text-align: center;">
@@ -152,11 +161,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4"></div>
                     </div>
-
                     <div class="row">
-                        <div class="col-lg-4"></div>
                         <div class="col-lg-4">
                             <div class="book-box">
                                 <h1 class="title">Recomendación de libros</h1>
@@ -168,18 +174,34 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4"></div>
-                    </div>		
-
+                        <div class="col-lg-8">
+                            <div class="book-box">
+                                <h1 class="title">Búsqueda de libro</h1>
+                                <br>
+                                <div style="text-align: center;">
+                                    <input type="text" class="form-control" id="txt-buscar-nombre" placeholder="Ingrese nombre del libro">
+                                </div>
+                                <br>
+                                <div style="text-align: center;">
+                                    <button type="submit" id="buscar-libro-btn" class="btn btn-primary form-control">Buscar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="link-area">
+                    <a href="https://github.com/sharlisbg/Proyecto2">GitHub del proyecto</a>
                 </div>
             </div>
         </div>
     </div>
-    
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.js"></script>
+    <script src="js/sb-admin-2.min.js"></script>
 </body>
 
 </html>
