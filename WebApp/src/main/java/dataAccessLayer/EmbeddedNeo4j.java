@@ -278,7 +278,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
                 {
                 
                 	tx.run("MATCH (p:Person {name: '" +personName+ "'}), (b:Book {name: '"+ bookName +"'}) " +
-                            "CREATE (p)-[:HAS_READ {rating: "+rating+"}]->(b)");
+                            "MERGE (p)-[:HAS_READ {rating: "+rating+"}]->(b)");
                     
                     return "OK";
                 }
@@ -292,32 +292,5 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
     }
     	
-    	
-    	
-       /* try (Session session = driver.session()) 
-        {
-        	Result result = session.run("MATCH (p:Person {name: '" +personName+ "'}), (b:Book {name: '"+ bookName +"'}) " +
-                    "CREATE (p)-[:HAS_READ {rating: "+rating+"}]->(b)");
-
-            /*String result = session.writeTransaction(new TransactionWork<String>() {
-                @Override
-                public String execute( Transaction tx ) 
-                {
-                    /*
-                     * MATCH(persona:Person{name:"Sharis"}),(libro:Book{name:"El nombre de la Rosa"})
-                      CREATE(persona) -[:HAS_READ{rating:5}]-> (libro)
-                     */
-                    /*tx.run("MATCH (p:Person {name: $personName}), (b:Book {name: $bookName}) " +
-                            "CREATE (p)-[:HAS_READ {rating: $rating}]->(b)",
-                            parameters("personName", personName, "bookName", bookName, "rating", rating));
-						
-                	tx.run("MATCH (p:Person {name: '" +personName+ "'}), (b:Book {name: '"+ bookName +"'}) " +
-                            "CREATE (p)-[:HAS_READ {rating: "+rating+"}]->(b)");
-                            
-                	
-                    return "ok";
-                }
-            });
-            return result; */
         	
 }
