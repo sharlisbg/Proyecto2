@@ -139,13 +139,13 @@ public class EmbeddedNeo4j implements AutoCloseable{
                     String query = "MATCH (persona:Person)-[:HAS_READ]->(libro:Book{name:\"" + lastread + "\"}) " +
                             "MATCH (persona)-[rating:HAS_READ]->(librodos:Book) " +
                             "WHERE rating.rating > 3 " +
-                            "RETURN librodos";
+                            "RETURN librodos.name";
     
                     Result result = tx.run(query);
                     LinkedList<String> mybooks = new LinkedList<String>();
                     List<Record> registros = result.list();
                     for (int i = 0; i < registros.size(); i++) {
-                        mybooks.add(registros.get(i).get("librodos").asString());
+                        mybooks.add(registros.get(i).get("librodos.name").asString());
                     }
     
                     return mybooks;

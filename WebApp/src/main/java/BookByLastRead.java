@@ -43,7 +43,7 @@ public class BookByLastRead extends HttpServlet {
 	 	
 	 	JSONArray LibrosLeidos = new JSONArray();
 	 	
-	 	String myBook = request.getParameter("name");
+	 	String myBook = request.getParameter("book_name");
 	 	 try ( EmbeddedNeo4j greeter = new EmbeddedNeo4j( "bolt://44.192.100.207:7687", "neo4j", "load-aptitudes-humans" ) )
 	        {
 			 	LinkedList<String> mybooks = greeter.getBooksbyLastRead(myBook);
